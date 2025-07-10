@@ -1,0 +1,10 @@
+192.168.1.1 - - [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
+10.0.0.1 - - [10/Oct/2000:13:55:36 -0700] "GET /index.html HTTP/1.0" 200 1234
+192.168.1.1 - - [10/Oct/2000:13:55:37 -0700] "GET /styles.css HTTP/1.0" 200 567
+127.0.0.1 - - [10/Oct/2000:13:55:37 -0700] "POST /api/login HTTP/1.1" 200 89
+10.0.0.1 - - [10/Oct/2000:13:55:38 -0700] "GET /images/logo.png HTTP/1.0" 200 9876
+192.168.1.1 - - [10/Oct/2000:13:55:38 -0700] "GET /favicon.ico HTTP/1.0" 404 0
+ERROR: Connection timeout
+WARNING: Invalid request format
+10.0.0.2 - - [10/Oct/2000:13:55:39 -0700] "GET /about.html HTTP/1.1" 200 3456
+192.168.1.1 - - [10/Oct/2000:13:55:40 -0700] "GET /contact.html HTTP/1.0" 200 2345
