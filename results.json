@@ -1,0 +1,104 @@
+{
+  "total_lines": 10,
+  "total_files": 1,
+  "ip_counts": [
+    [
+      "192.168.1.1",
+      4
+    ],
+    [
+      "10.0.0.1",
+      2
+    ],
+    [
+      "10.0.0.2",
+      1
+    ],
+    [
+      "127.0.0.1",
+      1
+    ]
+  ],
+  "log_entries": [
+    {
+      "ip": "192.168.1.1",
+      "timestamp": "10/Oct/2000:13:55:38 -0700",
+      "method": "GET",
+      "path": "/favicon.ico",
+      "status": 404,
+      "size": 0,
+      "user_agent": null
+    },
+    {
+      "ip": "10.0.0.2",
+      "timestamp": "10/Oct/2000:13:55:39 -0700",
+      "method": "GET",
+      "path": "/about.html",
+      "status": 200,
+      "size": 3456,
+      "user_agent": null
+    },
+    {
+      "ip": "192.168.1.1",
+      "timestamp": "10/Oct/2000:13:55:37 -0700",
+      "method": "GET",
+      "path": "/styles.css",
+      "status": 200,
+      "size": 567,
+      "user_agent": null
+    },
+    {
+      "ip": "10.0.0.1",
+      "timestamp": "10/Oct/2000:13:55:36 -0700",
+      "method": "GET",
+      "path": "/index.html",
+      "status": 200,
+      "size": 1234,
+      "user_agent": null
+    },
+    {
+      "ip": "127.0.0.1",
+      "timestamp": "10/Oct/2000:13:55:37 -0700",
+      "method": "POST",
+      "path": "/api/login",
+      "status": 200,
+      "size": 89,
+      "user_agent": null
+    },
+    {
+      "ip": "192.168.1.1",
+      "timestamp": "10/Oct/2000:13:55:36 -0700",
+      "method": "GET",
+      "path": "/apache_pb.gif",
+      "status": 200,
+      "size": 2326,
+      "user_agent": null
+    },
+    {
+      "ip": "10.0.0.1",
+      "timestamp": "10/Oct/2000:13:55:38 -0700",
+      "method": "GET",
+      "path": "/images/logo.png",
+      "status": 200,
+      "size": 9876,
+      "user_agent": null
+    },
+    {
+      "ip": "192.168.1.1",
+      "timestamp": "10/Oct/2000:13:55:40 -0700",
+      "method": "GET",
+      "path": "/contact.html",
+      "status": 200,
+      "size": 2345,
+      "user_agent": null
+    }
+  ],
+  "status_codes": {
+    "404": 1,
+    "200": 7
+  },
+  "methods": {
+    "GET": 7,
+    "POST": 1
+  }
+}
