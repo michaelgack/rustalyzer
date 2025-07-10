@@ -8,8 +8,14 @@ This command-line tool is designed to process massive log files (gigabytes in si
 
 - **Concurrent File Processing:** Reads and processes multiple log files simultaneously using `rayon`.
 - **High-Performance Parsing:** Uses the `regex` crate for optimized log entry parsing.
-- **Data Aggregation:** Currently counts the occurrences of each IP address found in the logs.
-- **Efficient Memory Management:** Streams files line-by-line, keeping memory usage low and predictable.
+- **Data Aggregation:** Counts IP addresses, HTTP status codes, and methods.
+- **Efficient Memory Management:** Streams files line-by-line with batched updates.
+- **Advanced Filtering:** Filter logs by HTTP status code or method.
+- **Search Capability:** Search for specific IP addresses or patterns.
+- **Export Options:** Export results to JSON, CSV, or text format.
+- **Thread Control:** Specify number of threads for processing.
+- **Verbose Mode:** Get detailed processing information.
+- **Field Extraction:** Extract and analyze HTTP methods, status codes, paths, and more.
 
 ## Getting Started
 
@@ -29,32 +35,76 @@ The optimized binary will be located at `target/release/rusty`.
 
 ### Usage
 
-To analyze one or more log files, pass their paths as command-line arguments:
-
 ```bash
-./target/release/rusty /path/to/your/log1.log /path/to/your/log2.log
+rusty [OPTIONS] <FILES>...
 ```
 
-#### Example
+#### Options
 
-Given a log file named `dummy.log`:
+- `-v, --verbose`: Enable verbose output with detailed processing information
+- `-s, --search <PATTERN>`: Search for specific IP addresses or patterns
+- `-t, --threads <NUM>`: Specify number of threads (default: all available)
+- `-e, --export <FILE>`: Export results to file (JSON/CSV/text based on extension)
+- `-a, --all`: Show all results instead of just top 20
+- `--extract-fields`: Extract and analyze HTTP methods, status codes, etc.
+- `--status <CODE>`: Filter logs by HTTP status code
+- `--method <METHOD>`: Filter logs by HTTP method (GET, POST, etc.)
 
-```log
-127.0.0.1 - - [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
-192.168.1.1 - - [10/Oct/2000:13:55:36 -0700] "GET /asf_logo.gif HTTP/1.0" 200 2326
-127.0.0.1 - - [10/Oct/2000:13:55:36 -0700] "POST /some/path HTTP/1.0" 404 2326
-10.0.0.1 - - [10/Oct/2000:13:55:36 -0700] "GET /another/path HTTP/1.0" 200 2326
+#### Examples
+
+**Basic usage:**
+```bash
+./target/release/rusty access.log error.log
 ```
 
-Running the tool will produce the following output:
+**Extract detailed fields with verbose output:**
+```bash
+./target/release/rusty logs/*.log --extract-fields --verbose
+```
+
+**Search for specific IP pattern:**
+```bash
+./target/release/rusty access.log --search "192.168"
+```
+
+**Filter by status code and export to JSON:**
+```bash
+./target/release/rusty access.log --extract-fields --status 404 --export errors.json
+```
+
+**Analyze with limited threads:**
+```bash
+./target/release/rusty large.log --threads 4
+```
+
+**Show all IPs (not just top 20):**
+```bash
+./target/release/rusty access.log --all
+```
+
+#### Sample Output
+
+Given a log file, the tool provides comprehensive analysis:
 
 ```
 Analyzing 1 files...
-Analysis complete.
+
+Analysis complete in 2.41ms
+Total lines processed: 10
+
 --- IP Address Counts ---
-192.168.1.1: 1
-10.0.0.1: 1
-127.0.0.1: 2
+192.168.1.1: 4
+10.0.0.1: 2
+127.0.0.1: 1
+10.0.0.2: 1
+
+--- HTTP Status Codes ---
+200: 7
+404: 1
+
+--- HTTP Methods ---
+GET: 7
+POST: 1
 ```
 
 ## License
